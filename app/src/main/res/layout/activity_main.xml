@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tvExpression"
+        android:id="@+id/math_operation"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:textColor="@color/white"
@@ -21,7 +21,7 @@
 
 
     <TextView
-        android:id="@+id/tvResult"
+        android:id="@+id/tv_result"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:textColor="@color/white"
@@ -43,12 +43,12 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/tvAC"
+                android:id="@+id/b_AC"
                 style="@style/ActionButtonStyle"
                 android:text="AC"/>
 
             <TextView
-                android:id="@+id/tvDivide"
+                android:id="@+id/b_divide"
                 style="@style/ActionButton2Style"
                 android:text="/"/>
 
@@ -62,22 +62,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvSeven"
+                android:id="@+id/b_7"
                 style="@style/NumberButtonStyle"
                 android:text="7"/>
 
             <TextView
-                android:id="@+id/tvEight"
+                android:id="@+id/b_8"
                 style="@style/NumberButtonStyle"
                 android:text="8"/>
 
             <TextView
-                android:id="@+id/tvNine"
+                android:id="@+id/b_9"
                 style="@style/NumberButtonStyle"
                 android:text="9"/>
 
             <TextView
-                android:id="@+id/tvMul"
+                android:id="@+id/b_mul"
                 style="@style/ActionButton2Style"
                 android:text="*"/>
 
@@ -90,22 +90,23 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvFour"
+                android:id="@+id/b_4"
                 style="@style/NumberButtonStyle"
                 android:text="4"/>
 
+
             <TextView
-                android:id="@+id/tvFive"
+                android:id="@+id/b_5"
                 style="@style/NumberButtonStyle"
                 android:text="5"/>
 
             <TextView
-                android:id="@+id/tvSix"
+                android:id="@+id/b_6"
                 style="@style/NumberButtonStyle"
                 android:text="6"/>
 
             <TextView
-                android:id="@+id/tvMinus"
+                android:id="@+id/b_minus"
                 style="@style/ActionButton2Style"
                 android:text="-"/>
 
@@ -119,22 +120,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvOne"
+                android:id="@+id/b_1"
                 style="@style/NumberButtonStyle"
                 android:text="1"/>
 
             <TextView
-                android:id="@+id/tvTwo"
+                android:id="@+id/b_2"
                 style="@style/NumberButtonStyle"
                 android:text="2"/>
 
             <TextView
-                android:id="@+id/tvThree"
+                android:id="@+id/b_3"
                 style="@style/NumberButtonStyle"
                 android:text="3"/>
 
             <TextView
-                android:id="@+id/tvPlus"
+                android:id="@+id/b_plus"
                 style="@style/ActionButton2Style"
                 android:text="+"/>
 
@@ -148,22 +149,22 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvDot"
+                android:id="@+id/b_dot"
                 style="@style/ActionButton2Style"
                 android:text="."/>
 
             <TextView
-                android:id="@+id/tvZero"
+                android:id="@+id/b_0"
                 style="@style/NumberButtonStyle"
                 android:text="0"/>
 
             <TextView
-                android:id="@+id/tvBack"
+                android:id="@+id/b_del"
                 style="@style/ActionButtonStyle"
                 android:text="DEL"/>
 
             <TextView
-                android:id="@+id/tvEquals"
+                android:id="@+id/b_equals"
                 style="@style/EqualButtonStyle"
                 android:text="="/>
 

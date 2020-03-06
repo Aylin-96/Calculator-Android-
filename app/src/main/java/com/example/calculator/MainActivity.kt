@@ -2,119 +2,69 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
+import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity()
 {
 
-    override fun onCreate(savedInstanceState: Bundle?)
-    {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        b_0.setOnClickListener { setTextFields("0") }
+        b_1.setOnClickListener { setTextFields("1") }
+        b_2.setOnClickListener { setTextFields("2") }
+        b_3.setOnClickListener { setTextFields("3") }
+        b_4.setOnClickListener { setTextFields("4") }
+        b_5.setOnClickListener { setTextFields("5") }
+        b_6.setOnClickListener { setTextFields("6") }
+        b_7.setOnClickListener { setTextFields("7") }
+        b_8.setOnClickListener { setTextFields("8") }
+        b_9.setOnClickListener { setTextFields("9") }
+        b_dot.setOnClickListener { setTextFields(".") }
+        b_plus.setOnClickListener { setTextFields("+") }
+        b_minus.setOnClickListener { setTextFields("-") }
+        b_mul.setOnClickListener { setTextFields("*") }
+        b_divide.setOnClickListener { setTextFields("/") }
+        b_AC.setOnClickListener {
+            math_operation.text=""
+            tv_result.text=""
+        }
+        b_del.setOnClickListener {
+            val str = math_operation.text.toString()
+            if (str.isNotEmpty())
+                math_operation.text = str.substring(0, str.length - 1)
 
-        /*Number Buttons*/
-
-        tvOne.setOnClickListener {
-            evaluateExpression("1", clear = true)
+            tv_result.text=""
         }
 
-        tvTwo.setOnClickListener {
-            evaluateExpression("2", clear = true)
-        }
+        b_equals.setOnClickListener {
+            try{
 
-        tvThree.setOnClickListener {
-            evaluateExpression("3", clear = true)
-        }
-        tvFour.setOnClickListener {
-            evaluateExpression("4", clear = true)
-        }
+                val ex = ExpressionBuilder(math_operation.text.toString()).build()
+                val result = ex.evaluate()
 
-        tvFive.setOnClickListener {
-            evaluateExpression("5", clear = true)
-        }
+                val longRes = result.toLong()
+                if(result == longRes.toDouble())
+                    tv_result.text = longRes.toString()
+                else
+                    tv_result.text = result.toString()
 
-        tvSix.setOnClickListener {
-            evaluateExpression("6", clear = true)
-        }
-
-        tvSeven.setOnClickListener {
-            evaluateExpression("7", clear = true)
-        }
-
-        tvEight.setOnClickListener {
-            evaluateExpression("8", clear = true)
-        }
-
-        tvNine.setOnClickListener {
-            evaluateExpression("9", clear = true)
-        }
-
-        tvZero.setOnClickListener {
-            evaluateExpression("0", clear = true)
-        }
-
-        /*Operators*/
-
-        tvPlus.setOnClickListener {
-            evaluateExpression("+", clear = true)
-        }
-
-        tvMinus.setOnClickListener {
-            evaluateExpression("-", clear = true)
-        }
-
-        tvMul.setOnClickListener {
-            evaluateExpression("*", clear = true)
-        }
-
-        tvDivide.setOnClickListener {
-            evaluateExpression("/", clear = true)
-        }
-
-        tvDot.setOnClickListener {
-            evaluateExpression(".", clear = true)
-        }
-
-        tvAC.setOnClickListener {
-            tvExpression.text = ""
-            tvResult.text = ""
-        }
-
-        tvEquals.setOnClickListener {
-            val text = tvExpression.text.toString()
-            val expression = ExpressionBuilder(text).build()
-
-            val result = expression.evaluate()
-            val longResult = result.toLong()
-            if (result == longResult.toDouble()) {
-                tvResult.text = longResult.toString()
-            } else {
-                tvResult.text = result.toString()
+            } catch (e:Exception) {
+                Log.d("Error!", "Message: ${e.message}")
             }
-        }
-
-        tvBack.setOnClickListener {
-            val text = tvExpression.text.toString()
-            if(text.isNotEmpty()) {
-                tvExpression.text = text.drop(1)
-            }
-
-            tvResult.text = ""
         }
     }
 
-    /*Function to calculate the expressions using expression builder library*/
-
-    fun evaluateExpression(string: String, clear: Boolean) {
-        if(clear) {
-            tvResult.text = ""
-            tvExpression.append(string)
-        } else {
-            tvExpression.append(tvResult.text)
-            tvExpression.append(string)
-            tvResult.text = ""
+    fun setTextFields(str: String) {
+        if(tv_result.text != "") {
+            math_operation.text = tv_result.text
+            tv_result.text = ""
         }
+
+        math_operation.append(str)
     }
 }
